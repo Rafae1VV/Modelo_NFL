@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from joblib import load
-import time
  
 # Función para cargar el modelo KNN
 def cargar_modelo_knn(ruta_modelo='modelo_nfl.joblib'):
@@ -48,24 +47,11 @@ if archivo_cargado is not None:
 # Suponiendo que tienes un gif para mostrar, descomenta la línea siguiente y reemplaza la ruta
     
     # Lista de rutas de tus GIFs
-lista_de_gifs = [
-    '200.gif',
-    'Nfl2.gif',
-    'nfl3.gif',
-    'nfl4.gif',
-    'nfl5.gif',
-]
 # Marcador de posición para el GIF
 col1, col2, col3 = st.columns([1,2,1])  # La relación aquí puede ser ajustada según necesites
 with col2:
-    espacio_gif = st.empty()
- 
-# Bucle para mostrar cada GIF
-for gif in lista_de_gifs:
-    espacio_gif.image(gif)
-    # Pausa por 2 segundos antes de mostrar el siguiente GIF
-    time.sleep(5)
- 
+    st.image('200.gif')
+
 # No olvides el resto de tu código Streamlit aquí
 #col1, col2, col3 = st.columns([1,2,1])  # La relación aquí puede ser ajustada según necesites
 #with col2:  # Usamos la columna del medio para el contenido que queremos centrar
