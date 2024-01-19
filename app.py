@@ -11,7 +11,7 @@ def cargar_modelo_knn(ruta_modelo='modelo_nfl.joblib'):
 st.title('Predicciones de Campo: Local o Visitante en la NFL')
  
 # Widget para cargar archivos
-st.header('Lugar para carga de archivo')
+st.header('Aquí puedes cargar el archivo')
 archivo_cargado = st.file_uploader("Carga tu archivo CSV", type=["csv"])
  
 # Verificar si se cargó un archivo y procesarlo
