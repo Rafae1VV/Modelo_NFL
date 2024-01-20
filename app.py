@@ -1,9 +1,13 @@
+import streamlit as st
+import pandas as pd
+from joblib import load
+ 
 # Función para cargar el modelo KNN
 def cargar_modelo_knn(ruta_modelo='modelo_nfl.joblib'):
     modelo = load(ruta_modelo)
     return modelo
  
-#construcción de la interfaz de usuario en Streamlit
+# construcción de la interfaz de usuario en Streamlit
 st.title('Predicciones de Campo: Local o Visitante en la NFL')
  
 # Widget para cargar archivos
@@ -38,9 +42,9 @@ if archivo_cargado is not None:
         file_name='predicciones.csv',
         mime='text/csv',
     )
-#Gif 
+
 col1, col2, col3 = st.columns([1,2,1])  # La relación aquí puede ser ajustada según necesites
 with col2:
-    st.image('200.gif')
- 
+        st.image('200.gif')
+
 # Ejecutar con: streamlit run app.py
