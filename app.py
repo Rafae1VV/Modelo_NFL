@@ -1,17 +1,13 @@
-import streamlit as st
-import pandas as pd
-from joblib import load
- 
 # Función para cargar el modelo KNN
 def cargar_modelo_knn(ruta_modelo='modelo_nfl.joblib'):
     modelo = load(ruta_modelo)
     return modelo
  
-# Inicia la construcción de la interfaz de usuario en Streamlit
+#construcción de la interfaz de usuario en Streamlit
 st.title('Predicciones de Campo: Local o Visitante en la NFL')
  
 # Widget para cargar archivos
-st.header('Aquí puedes cargar el archivo')
+st.header('Lugar para carga de archivo')
 archivo_cargado = st.file_uploader("Carga tu archivo CSV", type=["csv"])
  
 # Verificar si se cargó un archivo y procesarlo
@@ -21,7 +17,7 @@ if archivo_cargado is not None:
     datos_para_prediccion = datos.iloc[:,:8]
     # Cargar el modelo KNN
     modelo_knn = cargar_modelo_knn()
-    # Realizar la predicción (asegúrate de ajustar esto a cómo tu modelo procesa los datos)
+    # Realizar la predicción
     prediccion = modelo_knn.predict(datos_para_prediccion)
     # Convertir la predicción en un DataFrame para una mejor visualización
     df_prediccion = pd.DataFrame(prediccion, columns=['Prediccion'])
@@ -42,21 +38,9 @@ if archivo_cargado is not None:
         file_name='predicciones.csv',
         mime='text/csv',
     )
-# Espacio para mostrar un gif o cualquier otro contenido
-#st.header('Aquí va un gif')
-# Suponiendo que tienes un gif para mostrar, descomenta la línea siguiente y reemplaza la ruta
-    
-    # Lista de rutas de tus GIFs
-# Marcador de posición para el GIF
+#Gif 
 col1, col2, col3 = st.columns([1,2,1])  # La relación aquí puede ser ajustada según necesites
 with col2:
     st.image('200.gif')
-
-# No olvides el resto de tu código Streamlit aquí
-#col1, col2, col3 = st.columns([1,2,1])  # La relación aquí puede ser ajustada según necesites
-#with col2:  # Usamos la columna del medio para el contenido que queremos centrar
-    # Suponiendo que tienes un gif para mostrar, descomenta la línea siguiente y reemplaza la ruta
-#    st.image('200.gif')
-
  
 # Ejecutar con: streamlit run app.py
